@@ -40,6 +40,18 @@
 -- | 2     | 11      | Viewed  |
 -- | 1     | 2       | Clicked |
 -- +-------+---------+---------+
+
+--ad_id,user_id,action
+--1,1,Clicked
+--2,2,Clicked
+--3,3,Viewed
+--5,5,Ignored
+--1,7,Ignored
+--2,7,Viewed
+--3,5,Clicked
+--1,4,Viewed
+--2,11,Viewed
+--1,2,Clicked
 -- Result table:
 -- +-------+-------+
 -- | ad_id | ctr   |
@@ -77,3 +89,11 @@ select *
 from t1 join t2
 on t1.ad_id = t2.ad) a
 order by ctr desc, ad_id
+
+
+--df1 = df.where(f.col("action")=="Clicked").groupBy("ad_id").count().withColumnRenamed("count", "c1")
+--df2 = df.where(f.col("action")!="Ignored").groupBy("ad_id").count().withColumnRenamed("count", "c2")
+--df3 = df1.join(df2,on="ad_id", how="inner").join(df.select("ad_id"), on="ad_id", how="right")\
+--    .withColumn("ctr", f.round((f.col("c1")/f.col("c2"))*100, 2)).distinct()\
+--    .sort(f.col("ctr").desc()).select(["ad_id", "ctr"]).na.fill(0).show()
+--df3.show()

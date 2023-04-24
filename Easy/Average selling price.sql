@@ -42,6 +42,11 @@
 -- | 2          | 2019-02-01 | 2019-02-20 | 15     |
 -- | 2          | 2019-02-21 | 2019-03-31 | 30     |
 -- +------------+------------+------------+--------+
+--product_id,start_date,end_date,price
+--1,2019-02-17,2019-02-28,5
+--1,2019-03-01,2019-03-22,20
+--2,2019-02-01,2019-02-20,15
+--2,2019-02-21,2019-03-31,30
  
 -- UnitsSold table:
 -- +------------+---------------+-------+
@@ -52,6 +57,24 @@
 -- | 2          | 2019-02-10    | 200   |
 -- | 2          | 2019-03-22    | 30    |
 -- +------------+---------------+-------+
+--product_id,purchase_date,units
+--1,2019-02-25,100
+--1,2019-03-01,15
+--2,2019-02-10,200
+--2,2019-03-22,30
+
+--SCHEMA = StructType([
+--    StructField("product_id", IntegerType(), True),
+--    StructField("start_date", DateType(), True),
+--    StructField("end_date", DateType(), True),
+--    StructField("price", IntegerType(), True)
+--])
+--
+--SCHEMA2 = StructType([
+--    StructField("product_id", IntegerType(), True),
+--    StructField("purchase_date", DateType(), True),
+--    StructField("units", IntegerType(), True)
+--])
 
 -- Result table:
 -- +------------+---------------+
